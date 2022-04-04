@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air Pollution</title>
+</head>
+<body>
+  <header>
+    <!-- <h1 style="margin: 1em;">Air Pollution</h1> -->
+  </header>
+  <!-- get air quality index -->
+  <div style="margin: 2em; display: flex; flex-direction: column; justify-content: center;">
+    <h3>Get Air Quality Index</h3>
+    <!-- enter location coordinates -->
+    <p>Enter your location coordinates:</p>
+    <form method="POST" action="/breezeometer-aqi">
+      Latitude: <input type="float" name="lat">
+      Longitude: <input type="float" name="lon">
+      <input type="submit" value="Get AQI">
+    </form>
+    <!-- add geolocation here-->
+    <br>
+    <!-- <div>
+      <p>Or Enter Your Address:</p>
+      <form method="POST" action="/">
+        Address: <input type="text">
+        <input type="submit" value="Get AQI">
+      </form>
+    </div> -->
+  </div>
+
+  {% include 'partials/recommendation.html' %}
+  
+</body>
+</html>
+
+{% endblock %}
