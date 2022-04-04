@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AQI</title>
+</head>
+<body>
+  <div style="padding: 1em; border: 2px solid black; width: 500px; display: flex; flex-direction: column; justify-content: center;">
+    <h1>Current Air Conditions</h1>
+    <h4 style=" color: #FF7E00;">{{ aqi_category }}</h4>
+    <p style="font-size: 65px; color: #FF7E00; margin: unset;">{{ aqi_display }}</p>
+    <!-- <p>color: {{ aqi_color }}</p> -->
+    <h4>Pollutants Details:</h4>
+    <p>{{ co }}: {{ co_concentration }} {{ co_units }}</p>
+    <br>
+    <p>{{ no2 }}: {{ no2_concentration }} {{ no2_units }}</p>
+
+  </div>
+</body>
+</html>
+
+{% endblock %}
