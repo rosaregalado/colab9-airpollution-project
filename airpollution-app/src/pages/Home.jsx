@@ -1,15 +1,8 @@
-import '../styles/Imports.sass';
+import { Link } from "react-router-dom";
 
-function App() {
+function Home() {
   return (
-    <div className="app">
-      <header className="app-header">
-        <h1 className='app-logo'>Logo here</h1>
-
-        <button className='header-button'>Home</button>
-
-        <button className='header-button'>Recommendations</button>
-      </header>
+    <div className="home">
 
       <body>
         <form id="form" role="search">
@@ -32,4 +25,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
