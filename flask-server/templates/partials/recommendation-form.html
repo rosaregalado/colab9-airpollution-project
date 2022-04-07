@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- get health recommendations -->
+<div style="margin: 2em; display: flex; flex-direction: column; align-items: center;">
+  <h1 style="margin-bottom: 1em;">Want to get a personalized recommendation?</h1>
+  <form method="POST" action="/health_recommendations" style="margin-bottom: 1em;">
+    Latitude: <input type="float" name="lat">
+    Longitude: <input type="float" name="lon">
+    <br>
+
+    <!-- <div style="margin: 1em;">
+      <input type="checkbox" id="general_recc" name="general_recc" value={{general_recc}}>
+      <label for="general_recc"> I dont have any respiratory diseases </label>
+      <br>
+      <input type="checkbox" id="elderly_recc" name="elderly_recc" value={{elderly_recc}}>
+      <label for="elderly_recc"> I am 65+ </label>
+      <br>
+      <input type="checkbox" id="lung_disease_recc" name="lung_disease_recc" value={{lung_disease_recc}}>
+      <label for="lung_disease_recc"> I have a lung disease</label>
+      <br>
+      <input type="checkbox" id="heart_disease_recc" name="heart_disease_recc" value={{heart_disease_recc}}>
+      <label for="heart_disease_recc"> I have a heart disease</label>
+      <br>
+      <input type="checkbox" id="active_recc" name="active_recc" value={{active_recc}}>
+      <label for="active_recc"> I am an Active person</label>
+      <br>
+      <input type="checkbox" id="pregnant_women_recc" name="pregnant_women_recc" value={{pregnant_women_recc}}>
+      <label for="pregnant_women_recc"> I am pregnant</label>
+      <br>
+      <input type="checkbox" id="children_recc" name="children_recc" value={{children_recc}}>
+      <label for="children_recc">Under 18</label>
+      <br>
+      <input type="submit" value='Show Recommendation' style="margin: 1em;">
+    </div>
+  </form>
+</div> -->
+
+
+<br>
+<div class="form-floating">
+      <select class="form-select" id="floatingSelect" name='age'>
+        <option selected value="{{general_recc}}">18-65</option>
+        <option value="1">Under 18</option>
+        <option value="2">65+</option>
+      </select>
+      <label for="floatingSelect">Age Range</label>
+    </div>
+    
+    <div class="form-floating">
+      <select class="form-select" id="floatingSelect" aria-label="Floating label select example" style="color: red;">
+        <option selected>No</option>
+        <option value="1">Yes</option>
+      </select>
+      <label for="floatingSelect">Are you pregnant?</label>
+    </div>
+
+    <div class="form-floating">
+      <select class="form-select" id="floatingSelect" aria-label="Floating label select example" style="color: red;">
+        <option selected>No</option>
+        <option value="1">Yes</option>
+      </select>
+      <label for="floatingSelect">Do you have a lung disease?</label>
+    </div>
+
+    <div class="form-floating">
+      <select class="form-select" id="floatingSelect" aria-label="Floating label select example" style="color: red;">
+        <option selected>No</option>
+        <option value="1">Yes</option>
+      </select>
+      <label for="floatingSelect">Do you have a heart disease?</label>
+    </div>
+
+    <div class="form-floating">
+      <select class="form-select" id="floatingSelect" aria-label="Floating label select example" style="color: red;">
+        <option selected>No</option>
+        <option value="1">Yes</option>
+      </select>
+      <label for="floatingSelect">Active lifestyle</label>
+    </div>
+
+    <input type="submit" value='Show Recommendation' style="margin: 1em;">
+
+{% endblock %}

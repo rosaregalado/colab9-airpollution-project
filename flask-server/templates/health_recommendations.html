@@ -2,40 +2,29 @@
 
 {% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+<!-- display health recommendations -->
+<div style="display: flex; flex-direction: column; margin: 2em;">
+  <h1>Health Recommendations</h1>
+  <p style="color: blue;">General population:</p>
+  <p>{{ general_recc }}</p>
   
-  <!-- display health recommendations -->
-  <div style="display: flex; flex-direction: column; margin: 2em; width: 920px;">
-    <h1>Health Recommendations</h1>
-    <p style="color: blue;">General population:</p>
-    <p>{{ general_recc }}</p>
-    
-    <p style="color: blue;">Elderly (65+):</p>
-    <p>{{ elderly_recc }}</p>
+  <p style="color: blue;">Elderly (65+):</p>
+  <p>{{ elderly_recc }}</p>
 
-    <p style="color: blue;">Lung Diseases:</p>
-    <p>{{ lung_disease_recc }}</p>
+  <p style="color: blue;">Lung Diseases:</p>
+  <p>{{ lung_disease_recc }}</p>
 
-    <p style="color: blue;">Heart Diseases:</p>
-    <p>{{ heart_disease_recc }}</p>
+  <p style="color: blue;">Heart Diseases:</p>
+  <p>{{ heart_disease_recc }}</p>
 
-    <p style="color: blue;">Active person</p>
-    <p>{{ active_recc }}</p>
+  <p style="color: blue;">Active person</p>
+  <p>{{ active_recc }}</p>
 
-    <p style="color: blue;">Pregnant women</p>
-    <p>{{ pregnant_women_recc }}</p>
+  <p style="color: blue;">Pregnant women</p>
+  <p>{{ pregnant_women_recc }}</p>
 
-    <p style="color: blue;">Age under 18</p>
-    <p>{{ children_recc }}</p>
-  </div>
-</body>
-</html>
+  <p style="color: blue;">Under 18</p>
+  <p>{{ children_recc }}</p>
+</div>
 
 {% endblock %}
