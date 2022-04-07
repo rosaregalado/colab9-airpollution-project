@@ -3,8 +3,6 @@
 function Home() {
   return (
     <div className="home">
-
-      <body>
         <form id="form" role="search">
           <input type="search" id="query" name='q'
             placeholder='Location'
@@ -19,8 +17,6 @@ function Home() {
         <div className='progress-bar'>
           <div className='fill'></div>
         </div>
-      </body>
-
     </div>
   );
 }
