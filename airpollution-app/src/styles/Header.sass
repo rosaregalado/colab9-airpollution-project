@@ -4,8 +4,6 @@
  justify-content: space-between
  flex-direction: row
 
-
-
 .header-logo
   color: red
   margin: 1% 5% 0 5%
@@ -15,14 +13,28 @@
   flex-direction: row
 
 .home-link 
-  border: 1px solid green
-  padding: 5%
-  margin: 11% 5% 0 -55%
-
+    border: 1px solid green
+    margin: 11% 5% 0 -55%
 
 
 .recomendations-link 
     border: 1px solid brown
-    padding: 5%
     margin: 11% 0 0 0
   
+
+.home-link,
+.recomendations-link
+    border-radius: 10%
+    padding: 5%
+
+
+  
+.semi-circle
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    height: 100px
+    width: 200px
+    border-radius: 150px 150px 0 0
+    background-color: orange

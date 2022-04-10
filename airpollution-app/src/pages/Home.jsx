@@ -17,15 +17,14 @@ function Home() {
         </button>
       </form>
 
-      <div className="progress"> 
+      {/* <div className="progress"> 
         <CircularProgressbar value={percentage} text={`${percentage}%`} />;
-      </div>
+      </div> */}
 
-
-      <div className="aqi-index-container">
-        <h2>Air Quality Index Details</h2>
-      </div>
+      <div className='semi-circle'> </div>
+     
     </div>
+    
   );
 }
 
