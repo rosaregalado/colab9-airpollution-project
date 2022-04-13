@@ -1,5 +1,6 @@
 // import { Link } from "react-router-dom";
 import { CircularProgressbar } from 'react-circular-progressbar';
+import SemiCircleProgressBar from "react-progressbar-semicircle";
 import 'react-circular-progressbar/dist/styles.css';
 const percentage = 50
 
@@ -17,7 +18,9 @@ function Home() {
         </button>
       </form>
 
-      <div className='semi-circle'></div>
+      {/* <div className='semi-circle'></div> */}
+
+      <SemiCircleProgressBar percentage={50} showPercentValue />
 
       {/* <div className="progress"> 
         <CircularProgressbar value={percentage} text={`${percentage}%`} />;
