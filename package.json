@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/rosaregalado/colab9-airpollution-project/issues"
   },
-  "homepage": "https://github.com/rosaregalado/colab9-airpollution-project#readme"
+  "homepage": "https://github.com/rosaregalado/colab9-airpollution-project#readme",
+  "dependencies": {
+    "react-circular-progressbar": "^2.0.4"
+  }
 }

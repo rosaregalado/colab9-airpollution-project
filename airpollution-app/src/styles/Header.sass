@@ -1,0 +1,78 @@
+.app-header
+ border: 1px solid red
+ display: flex 
+ justify-content: space-between
+ flex-direction: row
+
+.header-logo
+  color: #654F96
+  margin: 1% 5% 0 5%
+
+
+.semi-circle
+  width: 200px
+  height: 100px
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0
+  border: 10px solid #000
+  border-bottom: 0
+
+.container
+  display: block
+  position: relative
+  padding-left: 35px
+  margin-bottom: 12px
+  cursor: pointer
+  font-size: 22px
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+  input
+    position: absolute
+    opacity: 0
+    cursor: pointer
+    height: 0
+    width: 0
+
+  .checkmark 
+    position: absolute
+    top: 0
+    left: 0
+    height: 25px
+    width: 25px
+    background-color: #9783C2
+    border-radius: 50%
+
+.forecast-container
+  display: flex
+  flex-directiom: row
+
+  .forecast
+    background: #E7E9FF
+    width: 4rem
+    height: 4rem
+    border-radius: 10px
+
+
+.recomentaion-container
+  border: 1px solid brown
+  
+  .question-container 
+    border: 1px solid blue
+    display: flex
+    flex-direction: row 
+
+
+    .answers-container 
+      display: flex
+      flex-direction: row
+
+
+.recomendation-button 
+  font-family: 'Inter', sans-serif
+  width: 15rem
+  height: 2.5rem
+  border-radius: 13px
+  background: #AF60FF
+  color: white
