@@ -32,32 +32,132 @@ function Home() {
         <div className='forecast'>Sun</div>
       </div>
 
-      <div className='question-container'>
-        <div>
-          <h1>Select your age range</h1>
-        </div>
+      <div>
+        <h1>Select your age range</h1>
+      </div>
 
-        <div>
-          <label class="container">One
+      <div className='question-container'>
+
+        <h1>question</h1>
+        <div className='answers-container'>
+          <div className="container">
+            <label className="question-label">one</label>
             <input type="checkbox" checked="checked" />
             <span className='checkmark'></span>
-          </label>
+          </div>
 
-          <label class="container">Two
+          <div className="container">
+            <label className="question-label">two</label>
             <input type="checkbox" />
             <span className='checkmark'></span>
-          </label>
+          </div>
 
-          <label class="container">Three
+          <div className="container">
+            <label className="question-label">three</label>
             <input type="checkbox" />
             <span className='checkmark'></span>
-          </label>
+          </div>
 
-          <label class="container">Four
+          <div className="container">
+            <label className="question-label">four</label>
             <input type="checkbox" />
             <span className='checkmark'></span>
-          </label>
+          </div>
         </div>
+
+      </div>
+
+      <div className='question-container'>
+
+        <h1>question</h1>
+        <div className='answers-container'>
+          <div className="container">
+            <label className="question-label">one</label>
+            <input type="checkbox" checked="checked" />
+            <span className='checkmark'></span>
+          </div>
+
+          <div className="container">
+            <label className="question-label">two</label>
+            <input type="checkbox" />
+            <span className='checkmark'></span>
+          </div>
+
+          <div className="container">
+            <label className="question-label">three</label>
+            <input type="checkbox" />
+            <span className='checkmark'></span>
+          </div>
+
+          <div className="container">
+            <label className="question-label">four</label>
+            <input type="checkbox" />
+            <span className='checkmark'></span>
+          </div>
+        </div>
+
+        </div>
+
+        <div className='question-container'>
+
+        <h1>question</h1>
+        <div className='answers-container'>
+          <div className="container">
+            <label className="question-label">one</label>
+            <input type="checkbox" checked="checked" />
+            <span className='checkmark'></span>
+          </div>
+
+          <div className="container">
+            <label className="question-label">two</label>
+            <input type="checkbox" />
+            <span className='checkmark'></span>
+          </div>
+
+          <div className="container">
+            <label className="question-label">three</label>
+            <input type="checkbox" />
+            <span className='checkmark'></span>
+          </div>
+
+          <div className="container">
+            <label className="question-label">four</label>
+            <input type="checkbox" />
+            <span className='checkmark'></span>
+          </div>
+        </div>
+
+        </div>
+
+        <div className='question-container'>
+
+        <h1>question</h1>
+        <div className='answers-container'>
+          <div className="container">
+            <label className="question-label">one</label>
+            <input type="checkbox" checked="checked" />
+            <span className='checkmark'></span>
+          </div>
+
+          <div className="container">
+            <label className="question-label">two</label>
+            <input type="checkbox" />
+            <span className='checkmark'></span>
+          </div>
+
+          <div className="container">
+            <label className="question-label">three</label>
+            <input type="checkbox" />
+            <span className='checkmark'></span>
+          </div>
+
+          <div className="container">
+            <label className="question-label">four</label>
+            <input type="checkbox" />
+            <span className='checkmark'></span>
+          </div>
+        </div>
+
       </div>
 
       <div className='recomendations-button'>
