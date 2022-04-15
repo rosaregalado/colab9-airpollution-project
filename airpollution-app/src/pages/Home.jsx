@@ -25,137 +25,129 @@ function Home() {
       {/* <div className="progress"> 
         <CircularProgressbar value={percentage} text={`${percentage}%`} />;
       </div> */}
-      
+
       <div className='forecast-container'>
         <div className='forecast'>Today</div>
         <div className='forecast'>Sat</div>
         <div className='forecast'>Sun</div>
       </div>
 
-      <div>
-        <h1>Select your age range</h1>
-      </div>
-
-      <div className='question-container'>
-
-        <h1>question</h1>
-        <div className='answers-container'>
-          <div className="container">
-            <label className="question-label">one</label>
-            <input type="checkbox" checked="checked" />
-            <span className='checkmark'></span>
-          </div>
-
-          <div className="container">
-            <label className="question-label">two</label>
-            <input type="checkbox" />
-            <span className='checkmark'></span>
-          </div>
-
-          <div className="container">
-            <label className="question-label">three</label>
-            <input type="checkbox" />
-            <span className='checkmark'></span>
-          </div>
-
-          <div className="container">
-            <label className="question-label">four</label>
-            <input type="checkbox" />
-            <span className='checkmark'></span>
-          </div>
+      <div className='recomentaion-container'>
+        <div className='title'>
+          <h2>Get Personalized recomendation</h2>
         </div>
 
-      </div>
+        <div className='question-container'>
 
-      <div className='question-container'>
+          <h3>Select your age range</h3>
 
-        <h1>question</h1>
-        <div className='answers-container'>
-          <div className="container">
-            <label className="question-label">one</label>
-            <input type="checkbox" checked="checked" />
-            <span className='checkmark'></span>
+          <div className='answers-container'>
+
+            <div className="container">
+              <label className="question-label"> under 20 </label>
+              <input type="checkbox" checked="checked" />
+              <span className='checkmark'></span>
+            </div>
+
+            <div className="container">
+              <label className="question-label"> 21 - 40 </label>
+              <input type="checkbox" />
+              <span className='checkmark'></span>
+            </div>
+
+            <div className="container">
+              <label className="question-label"> 41 - 60 </label>
+              <input type="checkbox" />
+              <span className='checkmark'></span>
+            </div>
+
+            <div className="container">
+              <label className="question-label"> older 60</label>
+              <input type="checkbox" />
+              <span className='checkmark'></span>
+            </div>
+
           </div>
-
-          <div className="container">
-            <label className="question-label">two</label>
-            <input type="checkbox" />
-            <span className='checkmark'></span>
-          </div>
-
-          <div className="container">
-            <label className="question-label">three</label>
-            <input type="checkbox" />
-            <span className='checkmark'></span>
-          </div>
-
-          <div className="container">
-            <label className="question-label">four</label>
-            <input type="checkbox" />
-            <span className='checkmark'></span>
-          </div>
-        </div>
 
         </div>
 
         <div className='question-container'>
 
-        <h1>question</h1>
-        <div className='answers-container'>
-          <div className="container">
-            <label className="question-label">one</label>
-            <input type="checkbox" checked="checked" />
-            <span className='checkmark'></span>
-          </div>
+          <h3>Are you Pregnant?</h3>
+          <div className='answers-container'>
 
-          <div className="container">
-            <label className="question-label">two</label>
-            <input type="checkbox" />
-            <span className='checkmark'></span>
-          </div>
+            <div className="container">
+              <label className="question-label"> Yes </label>
+              <input type="checkbox" checked="checked" />
+              <span className='checkmark'></span>
+            </div>
 
-          <div className="container">
-            <label className="question-label">three</label>
-            <input type="checkbox" />
-            <span className='checkmark'></span>
-          </div>
+            <div className="container">
+              <label className="question-label"> No </label>
+              <input type="checkbox" />
+              <span className='checkmark'></span>
+            </div>
 
-          <div className="container">
-            <label className="question-label">four</label>
-            <input type="checkbox" />
-            <span className='checkmark'></span>
+            <div className="container">
+              <label className="question-label"> Not sure </label>
+              <input type="checkbox" />
+              <span className='checkmark'></span>
+            </div>
+
           </div>
-        </div>
 
         </div>
 
         <div className='question-container'>
 
-        <h1>question</h1>
-        <div className='answers-container'>
-          <div className="container">
-            <label className="question-label">one</label>
-            <input type="checkbox" checked="checked" />
-            <span className='checkmark'></span>
+          <h3>Are you experiencing any heart disease</h3>
+
+          <div className='answers-container'>
+            <div className="container">
+              <label className="question-label"> Yes </label>
+              <input type="checkbox" checked="checked" />
+              <span className='checkmark'></span>
+            </div>
+
+            <div className="container">
+              <label className="question-label"> No </label>
+              <input type="checkbox" />
+              <span className='checkmark'></span>
+            </div>
+
+            <div className="container">
+              <label className="question-label"> Not Sure </label>
+              <input type="checkbox" />
+              <span className='checkmark'></span>
+            </div>
           </div>
 
-          <div className="container">
-            <label className="question-label">two</label>
-            <input type="checkbox" />
-            <span className='checkmark'></span>
+        </div>
+
+        <div className='question-container'>
+
+          <h3>Are you experiencing any lung disease</h3>
+          <div className='answers-container'>
+            <div className="container">
+              <label className="question-label"> Yes </label>
+              <input type="checkbox" checked="checked" />
+              <span className='checkmark'></span>
+            </div>
+
+            <div className="container">
+              <label className="question-label"> No </label>
+              <input type="checkbox" />
+              <span className='checkmark'></span>
+            </div>
+
+            <div className="container">
+              <label className="question-label"> Not sure</label>
+              <input type="checkbox" />
+              <span className='checkmark'></span>
+            </div>
+
           </div>
 
-          <div className="container">
-            <label className="question-label">three</label>
-            <input type="checkbox" />
-            <span className='checkmark'></span>
-          </div>
-
-          <div className="container">
-            <label className="question-label">four</label>
-            <input type="checkbox" />
-            <span className='checkmark'></span>
-          </div>
         </div>
 
       </div>
@@ -165,7 +157,7 @@ function Home() {
       </div>
 
     </div>
-    
+
   );
 }
 
