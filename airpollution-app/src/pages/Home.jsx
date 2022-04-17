@@ -7,7 +7,7 @@ const percentage = 50
 function Home() {
   return (
     <div className="home">
-      <form id="form" role="search">
+      <form id="form" role="search" className='search-bar'>
         <input type="search" id="query" name='q'
           placeholder='Location'
           aria-label='search in a location'
@@ -32,123 +32,83 @@ function Home() {
         <div className='forecast'>Sun</div>
       </div>
 
-      <div className='recomentaion-container'>
-        <div className='title'>
-          <h2>Get Personalized recomendation</h2>
-        </div>
+      <div className='title'>
+        <h2>Get Personalized recomendation</h2>
+      </div>
 
-        <div className='question-container'>
+      <div className='question-container'>
 
-          <h3>Select your age range</h3>
+        <h3>Select your age range</h3>
 
-          <div className='answers-container'>
-
-            <div className="container">
-              <label className="question-label"> under 20 </label>
-              <input type="checkbox" checked="checked" />
-              <span className='checkmark'></span>
-            </div>
-
-            <div className="container">
-              <label className="question-label"> 21 - 40 </label>
-              <input type="checkbox" />
-              <span className='checkmark'></span>
-            </div>
-
-            <div className="container">
-              <label className="question-label"> 41 - 60 </label>
-              <input type="checkbox" />
-              <span className='checkmark'></span>
-            </div>
-
-            <div className="container">
-              <label className="question-label"> older 60</label>
-              <input type="checkbox" />
-              <span className='checkmark'></span>
-            </div>
-
+        <form className='answers-container'>
+          <div className='answer'>
+            <input type="radio" name="question-1" className='checkbox' value="under-18" /> Under 18
+          </div>
+          <div className='answer'>
+            <input type="radio" name="question-1" className='checkbox' id='18-60' value="18-60" />18-60
+          </div>
+          <div className='answer'>
+            <input type="radio" name="question-1" className='checkbox' value="60+" />60+
           </div>
 
-        </div>
+        </form>
 
-        <div className='question-container'>
+      </div>
 
-          <h3>Are you Pregnant?</h3>
-          <div className='answers-container'>
+      <div className='question-container'>
 
-            <div className="container">
-              <label className="question-label"> Yes </label>
-              <input type="checkbox" checked="checked" />
-              <span className='checkmark'></span>
-            </div>
+        <h3>Are you pregnant</h3>
 
-            <div className="container">
-              <label className="question-label"> No </label>
-              <input type="checkbox" />
-              <span className='checkmark'></span>
-            </div>
-
-            <div className="container">
-              <label className="question-label"> Not sure </label>
-              <input type="checkbox" />
-              <span className='checkmark'></span>
-            </div>
-
+        <form className='answers-container'>
+          <div className='answer'>
+            <input type="radio" name="question-2" className='checkbox' value="yes" /> Yes
+          </div>
+          <div className='answer'>
+            <input type="radio" name="question-2" className='checkbox' value="no" />No
+          </div>
+          <div className='answer'>
+            <input type="radio" name="question-2" className='checkbox' value="not-applicable" />Not Applicable
           </div>
 
-        </div>
+        </form>
 
-        <div className='question-container'>
+      </div>
 
-          <h3>Are you experiencing any heart disease</h3>
+      <div className='question-container'>
 
-          <div className='answers-container'>
-            <div className="container">
-              <label className="question-label"> Yes </label>
-              <input type="checkbox" checked="checked" />
-              <span className='checkmark'></span>
-            </div>
+        <h3>Are you experiencing any heart disease</h3>
 
-            <div className="container">
-              <label className="question-label"> No </label>
-              <input type="checkbox" />
-              <span className='checkmark'></span>
-            </div>
-
-            <div className="container">
-              <label className="question-label"> Not Sure </label>
-              <input type="checkbox" />
-              <span className='checkmark'></span>
-            </div>
+        <form className='answers-container'>
+          <div className='answer'>
+            <input type="radio" name="question-3" className='checkbox' value="Yes" />Yes
+          </div>
+          <div className='answer'>
+            <input type="radio" name="question-3" className='checkbox' value="No" />No
+          </div>
+          <div className='answer'>
+            <input type="radio" name="question-3" className='checkbox' value="Not-applicable" />Not Applicable
           </div>
 
-        </div>
+        </form>
 
-        <div className='question-container'>
+      </div>
 
-          <h3>Are you experiencing any lung disease</h3>
-          <div className='answers-container'>
-            <div className="container">
-              <label className="question-label"> Yes </label>
-              <input type="checkbox" checked="checked" />
-              <span className='checkmark'></span>
-            </div>
+      <div className='question-container'>
 
-            <div className="container">
-              <label className="question-label"> No </label>
-              <input type="checkbox" />
-              <span className='checkmark'></span>
-            </div>
+        <h3>Are you suffering from any lung disease</h3>
 
-            <div className="container">
-              <label className="question-label"> Not sure</label>
-              <input type="checkbox" />
-              <span className='checkmark'></span>
-            </div>
-
+        <form className='answers-container'>
+          <div className='answer'>
+            <input type="radio" name="question-4" className='checkbox' value="Yes" />Yes
+          </div>
+          <div className='answer'>
+            <input type="radio" name="question-4" className='checkbox' value="no" />No
+          </div>
+          <div className='answer'>
+            <input type="radio" name="question-4" className='checkbox' value="Not-applicable" />Not Applicable
           </div>
 
-        </div>
+        </form>
 
       </div>
 
