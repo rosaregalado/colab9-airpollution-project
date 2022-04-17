@@ -1,8 +1,10 @@
 from flask import Flask, request, render_template, redirect, url_for, jsonify
 import requests
 from geopy.geocoders import Nominatim
+from flask_cors import CORS
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"*": {"origins": "*"}})
 
 # geopy library (example)
 # address_input = input("Enter your adress:")
@@ -41,7 +43,7 @@ def breezometer_aqi():
   # api headers
   headers = {
     "X-RapidAPI-Host": "air-quality.p.rapidapi.com",
-    "X-RapidAPI-Key": "51c6c1f44cmsh5272fb64badcce3p15ae48jsna39e3b1e16d0"
+    "X-RapidAPI-Key": "e781aa816amshbf10e18b7cc1a54p10f94ajsn33d3e400d096"
   }
 
   # convert api data to json
