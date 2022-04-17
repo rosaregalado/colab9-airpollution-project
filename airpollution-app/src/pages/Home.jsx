@@ -2,14 +2,31 @@
 import { CircularProgressbar } from 'react-circular-progressbar';
 import SemiCircleProgressBar from "react-progressbar-semicircle";
 import 'react-circular-progressbar/dist/styles.css';
-const percentage = 50
+import axios from "axios"
+import { useState } from 'react';
 
 function Home() {
+  const [percentage, setPercentage] = useState(0)
+
+  function getData(e) {
+
+    let formData = new FormData(document.getElementById('form'))
+
+    const requestOptions = {
+      method: 'POST',
+      body: formData
+    };
+
+    e.preventDefault()
+    fetch('http://localhost:5000/', requestOptions)
+    .then(response => response.json())
+    .then(data => setPercentage(data));
+  }
+
   return (
     <div className="home">
-      <form id="form" role="search" className='search-bar'>
-        <input type="search" id="query" name='q'
-          placeholder='Location'
+      <form id="form" role="search" className='search-bar' name='form' onSubmit={getData}>
+        <input type="text" id="query" name='location'
           aria-label='search in a location'
         />
 
@@ -20,7 +37,7 @@ function Home() {
 
       {/* <div className='semi-circle'></div> */}
 
-      <SemiCircleProgressBar percentage={50} showPercentValue />
+      <SemiCircleProgressBar percentage={percentage} showPercentValue />
 
       {/* <div className="progress"> 
         <CircularProgressbar value={percentage} text={`${percentage}%`} />;
