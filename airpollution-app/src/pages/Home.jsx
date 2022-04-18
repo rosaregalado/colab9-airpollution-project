@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 function Home() {
   const [percentage, setPercentage] = useState(0)
+  const colorCondition = (percentage <= 25) ? "red" : (percentage >= 75) ? "green" : "yellow"
 
   function getData(e) {
 
@@ -36,8 +37,7 @@ function Home() {
         </button>
       </form>
 
-      <SemiCircleProgressBar percentage={percentage} showPercentValue  stroke={'red'} strokeWidth={'15'} diameter={'300'}/>
-
+      <SemiCircleProgressBar percentage={percentage} showPercentValue stroke={colorCondition} strokeWidth={'15'} diameter={'300'}/>
 
       <div className='forecast-container'>
         <div className='forecast'></div>
