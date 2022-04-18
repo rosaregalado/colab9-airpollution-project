@@ -10,15 +10,17 @@ body
   align-items: center
   flex-direction: column
 
+  // search bar styling
   .search-bar
-    color: white
-    background-color: black
-    width: 300px
+    color: #5C5C60
+    background-color: #D9CAFB
+    width: 400px
     height: 44px
-    border-radius: 5px
+    border-radius: 30px
     display: flex
-    flex-direction: row
+    flex-direction: row-reverse
     align-items: center
+    margin: 5%
 
     input
       all: unset
@@ -34,11 +36,15 @@ body
       height: 44px
 
     svg
-      fill: currentColor
       width: 24px
       height: 24px
       padding: 10px
+      color: #5C5C60
+
+    // search bar styling ends here
 
 
-  ::placeholder
-  opacity: 0.7
+.semicircle-container 
+  margin-top: 2%
+  font-size: 20px
+  

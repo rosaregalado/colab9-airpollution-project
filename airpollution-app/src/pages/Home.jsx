@@ -26,7 +26,8 @@ function Home() {
   return (
     <div className="home">
       <form id="form" role="search" className='search-bar' name='form' onSubmit={getData}>
-        <input type="text" id="query" name='location'
+        <input type="text" id="query" name='location' 
+          placeholder="location"
           aria-label='search in a location'
         />
 
@@ -35,18 +36,13 @@ function Home() {
         </button>
       </form>
 
-      {/* <div className='semi-circle'></div> */}
+      <SemiCircleProgressBar percentage={percentage} showPercentValue  stroke={'red'} strokeWidth={'15'} diameter={'300'}/>
 
-      <SemiCircleProgressBar percentage={percentage} showPercentValue />
-
-      {/* <div className="progress"> 
-        <CircularProgressbar value={percentage} text={`${percentage}%`} />;
-      </div> */}
 
       <div className='forecast-container'>
-        <div className='forecast'>Today</div>
-        <div className='forecast'>Sat</div>
-        <div className='forecast'>Sun</div>
+        <div className='forecast'></div>
+        <div className='forecast'></div>
+        <div className='forecast'></div>
       </div>
 
       <div className='title'>

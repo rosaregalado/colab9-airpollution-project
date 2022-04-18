@@ -1,38 +1,39 @@
 .app-header
- border: 1px solid red
  display: flex 
  justify-content: space-between
  flex-direction: row
+ background: #FFFFFF
+ height: 95px
+
 
 .header-logo
   color: #654F96
   margin: 1% 5% 0 5%
+  margin: auto
 
-.semi-circle
-  width: 200px
-  height: 100px
-  border-radius: 50% 50% 0 0 / 100% 100% 0 0
-  border: 10px solid #000
-  border-bottom: 0
 
 .forecast-container
   display: flex
   flex-directiom: row
+  justify-content: space-between
 
   .forecast
     background: #E7E9FF
-    width: 4rem
+    width: 12rem
     height: 4rem
     border-radius: 10px
+    margin: 10%
+
+
+
   
 .question-container 
   display: flex
   width: 80%
   justify-content: space-between
   background-color: white
-
-  h3
-    color: red
+  border-radius: 25px
+  margin: 2%
 
   .answers-container 
     display: flex
@@ -41,16 +42,16 @@
     justify-content: space-evenly
 
     .answer
-      margin: 0
-    // .checkbox
-    //   float: left
-    //   width: 20px
-    //   height: 20px
-    //   margin: 5px
-    //   border: 1px solid rgba(0, 0, 0, .2)
+      margin: 15px
+      .checkbox : after
+        background-color: #9783C2
+      // float: left
+      // width: 20px
+      // height: 20px
+      // margin: 5px
+      // border: 1px solid rgba(0, 0, 0, .2)
 
 .recomendation-button 
-  font-family: 'Inter', sans-serif
   width: 15rem
   height: 2.5rem
   border-radius: 13px
