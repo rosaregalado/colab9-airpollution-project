@@ -7,26 +7,56 @@ import { useState } from 'react';
 
 function Home() {
   const [percentage, setPercentage] = useState(0)
+  const [dayForecast, setdayForecast] = useState(0)
+  const [twoDayForecast, setTwoDayForecast] = useState(0)
+  const [threeDayForecast, setThreeDayForecast] = useState(0)
+
   const colorCondition = (percentage <= 25) ? "red" : (percentage >= 75) ? "green" : "yellow"
 
-  function getData(e) {
+  function getAllData(data) {
+    
+    function getAqiData(e) {
+  
+      let formData = new FormData(document.getElementById('form'))
+  
+      const requestOptions = {
+        method: 'POST',
+        body: formData
+      };
+  
+      e.preventDefault()
+      fetch('http://localhost:5000/', requestOptions)
+      .then(response => response.json())
+      .then(data => setPercentage(data));
+    }
+  
+    function getForecast(e) {
+      let formData = new FormData(document.getElementById('form'))
+  
+      const requestOptions = {
+        method: 'POST',
+        body: formData
+      };
+  
+      e.preventDefault()
+      fetch('http://localhost:5000/forecast', requestOptions)
+      .then(response => response.json())
+      .then(data => updateForecastStates(data));
+    }
 
-    let formData = new FormData(document.getElementById('form'))
+    function updateForecastStates(e) {
+      setdayForecast(e[0])
+      setTwoDayForecast(e[1])
+      setThreeDayForecast(e[2])
+    }
 
-    const requestOptions = {
-      method: 'POST',
-      body: formData
-    };
-
-    e.preventDefault()
-    fetch('http://localhost:5000/', requestOptions)
-    .then(response => response.json())
-    .then(data => setPercentage(data));
+    getAqiData(data)
+    getForecast(data)
   }
 
   return (
     <div className="home">
-      <form id="form" role="search" className='search-bar' name='form' onSubmit={getData}>
+      <form id="form" role="search" className='search-bar' name='form' onSubmit={getAllData}>
         <input type="text" id="query" name='location' 
           placeholder="location"
           aria-label='search in a location'
@@ -40,9 +70,26 @@ function Home() {
       <SemiCircleProgressBar percentage={percentage} showPercentValue stroke={colorCondition} strokeWidth={'15'} diameter={'300'}/>
 
       <div className='forecast-container'>
-        <div className='forecast'></div>
-        <div className='forecast'></div>
-        <div className='forecast'></div>
+        <div className='forecast'>
+          <h5>in 24 hr</h5>
+          <p>
+            {dayForecast}
+          </p>
+          
+        </div>
+        <div className='forecast'>
+          <h5>in 48 hr</h5>
+          <p>
+            {twoDayForecast}
+          </p>
+          
+        </div>
+        <div className='forecast'>
+          <h5>in 72 hr</h5>
+          <p>
+            {threeDayForecast}
+          </p>
+        </div>
       </div>
 
       <div className='title'>
