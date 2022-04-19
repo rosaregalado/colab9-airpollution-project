@@ -86,7 +86,7 @@ def health_recommendations():
 
 
 # returns aqi forecast (api)
-@app.route('/forecast', methods=['GET'])
+@app.route('/forecast', methods=['POST'])
 def forecast():
   # requests user input for location
   location = request.form['location']
@@ -102,7 +102,7 @@ def forecast():
 
   headers = {
     "X-RapidAPI-Host": "air-quality.p.rapidapi.com",
-    "X-RapidAPI-Key": "51c6c1f44cmsh5272fb64badcce3p15ae48jsna39e3b1e16d0"
+    "X-RapidAPI-Key": "e781aa816amshbf10e18b7cc1a54p10f94ajsn33d3e400d096"
   }
   # request data from api url
   response = requests.request("GET", api_url, headers=headers, params=querystring)
