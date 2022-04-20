@@ -7,14 +7,9 @@ import os
 dotenv.load_dotenv('/.env')
 
 
-
 app = Flask(__name__, static_folder='airpollution-app/build', static_url_path='')
-cors = CORS(app, resources={r"*": {"origins": "*"}})
+cors = CORS(app)
 
-# geopy library (example)
-# address_input = input("Enter your adress:")
-# geolocator = Nominatim(user_agent="myApp")
-# location = geolocator.geocode("175 5th Avenue NYC")
 
 # root route
 @app.route('/')
@@ -23,15 +18,8 @@ def index():
   return send_from_directory(app.static_folder, 'index.html')
 
 
-# ignore this route, it only renders a recommendation form 
-@app.route('/recommendation-form', methods=['GET', 'POST'])
-def recc_form():
-  return render_template('partials/recommendation-form.html')
-
-
-
 # -----------------------------------------------------------------------------------------------
-# API endpoints/routes:
+# API endpoints:
 
 # returns current air quality index
 @app.route('/', methods=['POST'])
@@ -128,6 +116,11 @@ def forecast():
   # returns aqi for the next 3 days
   return jsonify(aqi_data_24, aqi_data_48, aqi_data_71)
 
+
+# geopy library (example)
+# address_input = input("Enter your adress:")
+# geolocator = Nominatim(user_agent="myApp")
+# location = geolocator.geocode("175 5th Avenue NYC")
 
 # runs app
 if __name__ == "__main__":
