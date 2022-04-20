@@ -2,11 +2,14 @@ from flask import Flask, request, render_template, redirect, url_for, jsonify
 import requests
 from geopy.geocoders import Nominatim
 import dotenv
+from flask_cors import CORS, cross_origin
 import os
 dotenv.load_dotenv('/.env')
 
 
-app = Flask(__name__)
+
+app = Flask(__name__, static_folder='./build', static_url_path='/')
+cors = CORS(app, resources={r"*": {"origins": "*"}})
 
 # geopy library (example)
 # address_input = input("Enter your adress:")
@@ -16,7 +19,17 @@ app = Flask(__name__)
 # root route
 @app.route('/')
 def index():
-  return render_template('index.html')
+  return app.send_static_file('index.html')
+
+@app.errorhandler(404)
+def not_found(e):
+  return app.send_static_file('index.html')
+
+# ignore this route, it only renders a recommendation form 
+@app.route('/recommendation-form', methods=['GET', 'POST'])
+def recc_form():
+  return render_template('partials/recommendation-form.html')
+
 
 # ignore this route, it only renders a recommendation form 
 @app.route('/recommendation-form', methods=['GET', 'POST'])
@@ -89,7 +102,8 @@ def health_recommendations():
 
 
 # returns aqi forecast (api)
-@app.route('/forecast', methods=['GET'])
+
+@app.route('/forecast', methods=['POST'])
 def forecast():
   # requests user input for location
   location = request.form['location']
@@ -112,10 +126,10 @@ def forecast():
 
   json_obj = response.json()
   # 24 hours later (tomorrow):
-  aqi_data_24 = json_obj['data'][24]['aqi']
+  aqi_data_24 = json_obj['data'][23]['aqi']
   # 48 hours later (2nd day):
-  aqi_data_48 = json_obj['data'][48]['aqi']
-  # 71 hours later (3rd day):
+  aqi_data_48 = json_obj['data'][47]['aqi']
+  # 72 hours later (3rd day):
   aqi_data_71 = json_obj['data'][71]['aqi']
 
   # returns aqi for the next 3 days

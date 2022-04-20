@@ -2,14 +2,86 @@
 import { CircularProgressbar } from 'react-circular-progressbar';
 import SemiCircleProgressBar from "react-progressbar-semicircle";
 import 'react-circular-progressbar/dist/styles.css';
-const percentage = 50
+import axios from "axios"
+import { useState } from 'react';
 
 function Home() {
+  const [percentage, setPercentage] = useState(0)
+  const [dayForecast, setdayForecast] = useState(0)
+  const [twoDayForecast, setTwoDayForecast] = useState(0)
+  const [threeDayForecast, setThreeDayForecast] = useState(0)
+  const [forecastState, setForecastState] = useState([])
+
+  const colorCondition = (percentage < 51) ? "green" 
+  : (percentage >= 51 && percentage <= 100) ? "yellow" 
+  : (percentage >= 101 && percentage <= 200) ? "orange" 
+  : (percentage >= 201 && percentage <= 300) ? "red" 
+  : (percentage >= 301 && percentage <= 400) ? "#88003A"
+  : (percentage >= 401 && percentage <= 500) ? "#6C0015" : "#000000"
+
+
+  function getAllData(data) {
+    
+    function getAqiData(e) {
+  
+      let formData = new FormData(document.getElementById('form'))
+  
+      const requestOptions = {
+        method: 'POST',
+        body: formData
+      };
+  
+      e.preventDefault()
+      fetch('http://localhost:5000/', requestOptions)
+      .then(response => response.json())
+      .then(data => setPercentage(data));
+    }
+  
+    function getForecast(e) {
+      let formData = new FormData(document.getElementById('form'))
+  
+      const requestOptions = {
+        method: 'POST',
+        body: formData
+      };
+  
+      e.preventDefault()
+      fetch('http://localhost:5000/forecast', requestOptions)
+      .then(response => response.json())
+      .then(data => updateForecastStates(data));
+    }
+
+    function updateForecastStates(e) {
+      setdayForecast(e[0])
+      setTwoDayForecast(e[1])
+      setThreeDayForecast(e[2])
+    }
+
+    function getRecommendations(e) {
+      let formData = new FormData(document.getElementById('form'))
+  
+      const requestOptions = {
+        method: 'POST',
+        body: formData
+      };
+  
+      e.preventDefault()
+      fetch('http://localhost:5000/health_recommendations', requestOptions)
+      .then(response => response.json())
+      .then(data => setForecastState(data));
+    }
+
+    getAqiData(data)
+    getForecast(data)
+    getRecommendations(data)
+  }
+
+
   return (
     <div className="home">
-      <form id="form" role="search">
-        <input type="search" id="query" name='q'
-          placeholder='Location'
+      <form id="form" role="search" className='search-bar' name='form' onSubmit={getAllData}>
+        <input type="text" id="query" name='location' 
+          placeholder="location"
           aria-label='search in a location'
         />
 
@@ -18,142 +90,118 @@ function Home() {
         </button>
       </form>
 
-      {/* <div className='semi-circle'></div> */}
-
-      <SemiCircleProgressBar percentage={50} showPercentValue />
-
-      {/* <div className="progress"> 
-        <CircularProgressbar value={percentage} text={`${percentage}%`} />;
-      </div> */}
+      <SemiCircleProgressBar percentage={percentage} showPercentValue stroke={colorCondition} strokeWidth={'15'} diameter={'300'}/>
 
       <div className='forecast-container'>
-        <div className='forecast'>Today</div>
-        <div className='forecast'>Sat</div>
-        <div className='forecast'>Sun</div>
+        <div className='forecast'>
+          <h5>in 24 hr</h5>
+          <p>
+            {dayForecast}
+          </p>
+          
+        </div>
+        <div className='forecast'>
+          <h5>in 48 hr</h5>
+          <p>
+            {twoDayForecast}
+          </p>
+          
+        </div>
+        <div className='forecast'>
+          <h5>in 72 hr</h5>
+          <p>
+            {threeDayForecast}
+          </p>
+        </div>
       </div>
 
-      <div className='recomentaion-container'>
-        <div className='title'>
-          <h2>Get Personalized recomendation</h2>
-        </div>
+      <div className='title'>
+        <h2>Get Personalized recomendation</h2>
+      </div>
 
-        <div className='question-container'>
+      <div className='question-container'>
 
-          <h3>Select your age range</h3>
+        <h3>Select your age range</h3>
 
-          <div className='answers-container'>
-
-            <div className="container">
-              <label className="question-label"> under 20 </label>
-              <input type="checkbox" checked="checked" />
-              <span className='checkmark'></span>
-            </div>
-
-            <div className="container">
-              <label className="question-label"> 21 - 40 </label>
-              <input type="checkbox" />
-              <span className='checkmark'></span>
-            </div>
-
-            <div className="container">
-              <label className="question-label"> 41 - 60 </label>
-              <input type="checkbox" />
-              <span className='checkmark'></span>
-            </div>
-
-            <div className="container">
-              <label className="question-label"> older 60</label>
-              <input type="checkbox" />
-              <span className='checkmark'></span>
-            </div>
-
+        <form className='answers-container'>
+          <div className='answer'>
+            <input type="radio" name="question-1" className='checkbox' value="under-18" /> Under 18
+          </div>
+          <div className='answer'>
+            <input type="radio" name="question-1" className='checkbox' id='18-60' value="18-60" />18-60
+          </div>
+          <div className='answer'>
+            <input type="radio" name="question-1" className='checkbox' value="60+" />60+
           </div>
 
-        </div>
+        </form>
 
-        <div className='question-container'>
+      </div>
 
-          <h3>Are you Pregnant?</h3>
-          <div className='answers-container'>
+      <div className='question-container'>
 
-            <div className="container">
-              <label className="question-label"> Yes </label>
-              <input type="checkbox" checked="checked" />
-              <span className='checkmark'></span>
-            </div>
+        <h3>Are you pregnant</h3>
 
-            <div className="container">
-              <label className="question-label"> No </label>
-              <input type="checkbox" />
-              <span className='checkmark'></span>
-            </div>
-
-            <div className="container">
-              <label className="question-label"> Not sure </label>
-              <input type="checkbox" />
-              <span className='checkmark'></span>
-            </div>
-
+        <form className='answers-container'>
+          <div className='answer'>
+            <input type="radio" name="question-2" className='checkbox' value="yes" /> Yes
+          </div>
+          <div className='answer'>
+            <input type="radio" name="question-2" className='checkbox' value="no" />No
+          </div>
+          <div className='answer'>
+            <input type="radio" name="question-2" className='checkbox' value="not-applicable" />Not Applicable
           </div>
 
-        </div>
+        </form>
 
-        <div className='question-container'>
+      </div>
 
-          <h3>Are you experiencing any heart disease</h3>
+      <div className='question-container'>
 
-          <div className='answers-container'>
-            <div className="container">
-              <label className="question-label"> Yes </label>
-              <input type="checkbox" checked="checked" />
-              <span className='checkmark'></span>
-            </div>
+        <h3>Are you experiencing any heart disease</h3>
 
-            <div className="container">
-              <label className="question-label"> No </label>
-              <input type="checkbox" />
-              <span className='checkmark'></span>
-            </div>
-
-            <div className="container">
-              <label className="question-label"> Not Sure </label>
-              <input type="checkbox" />
-              <span className='checkmark'></span>
-            </div>
+        <form className='answers-container'>
+          <div className='answer'>
+            <input type="radio" name="question-3" className='checkbox' value="Yes" />Yes
+          </div>
+          <div className='answer'>
+            <input type="radio" name="question-3" className='checkbox' value="No" />No
+          </div>
+          <div className='answer'>
+            <input type="radio" name="question-3" className='checkbox' value="Not-applicable" />Not Applicable
           </div>
 
-        </div>
+        </form>
 
-        <div className='question-container'>
+      </div>
 
-          <h3>Are you experiencing any lung disease</h3>
-          <div className='answers-container'>
-            <div className="container">
-              <label className="question-label"> Yes </label>
-              <input type="checkbox" checked="checked" />
-              <span className='checkmark'></span>
-            </div>
+      <div className='question-container'>
 
-            <div className="container">
-              <label className="question-label"> No </label>
-              <input type="checkbox" />
-              <span className='checkmark'></span>
-            </div>
+        <h3>Are you suffering from any lung disease</h3>
 
-            <div className="container">
-              <label className="question-label"> Not sure</label>
-              <input type="checkbox" />
-              <span className='checkmark'></span>
-            </div>
-
+        <form className='answers-container'>
+          <div className='answer'>
+            <input type="radio" name="question-4" className='checkbox' value="Yes" />Yes
+          </div>
+          <div className='answer'>
+            <input type="radio" name="question-4" className='checkbox' value="no" />No
+          </div>
+          <div className='answer'>
+            <input type="radio" name="question-4" className='checkbox' value="Not-applicable" />Not Applicable
           </div>
 
-        </div>
+        </form>
 
       </div>
 
       <div className='recomendations-button'>
         <button type='button' className='recomendation-button'> Show Recomendations </button>
+        <div>
+          <p className='recomendations'>
+            {forecastState}
+          </p>
+        </div>
       </div>
 
     </div>
