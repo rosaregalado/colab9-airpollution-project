@@ -1,8 +1,8 @@
-plan of action:
+Plan of action:
 
-1. deploy API alone to Heroku
+1. deploy server API alone to Heroku
 
-2. deploy React application to github or heroku
+2. deploy React application to heroku
 
 
 Read me / gh-main-branch: 
