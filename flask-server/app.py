@@ -6,6 +6,8 @@ from flask_cors import CORS, cross_origin
 import os
 dotenv.load_dotenv('/.env')
 
+
+
 app = Flask(__name__, static_folder='./build', static_url_path='/')
 cors = CORS(app, resources={r"*": {"origins": "*"}})
 
@@ -29,8 +31,14 @@ def recc_form():
   return render_template('partials/recommendation-form.html')
 
 
+# ignore this route, it only renders a recommendation form 
+@app.route('/recommendation-form', methods=['GET', 'POST'])
+def recc_form():
+  return render_template('partials/recommendation-form.html')
+
+
 # -----------------------------------------------------------------------------------------------
-# API routes:
+# API endpoints/routes:
 
 # returns current air quality index
 @app.route('/', methods=['POST'])
@@ -94,6 +102,7 @@ def health_recommendations():
 
 
 # returns aqi forecast (api)
+
 @app.route('/forecast', methods=['POST'])
 def forecast():
   # requests user input for location
