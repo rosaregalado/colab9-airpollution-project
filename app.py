@@ -11,6 +11,16 @@ app = Flask(__name__, static_folder='airpollution-app/build', static_url_path=''
 cors = CORS(app)
 
 
+
+# testing endpoint
+@app.route('/testing', methods=['GET'])
+def testing():
+  
+  test_data = '{"test": 1}'
+  
+  return jsonify(test_data)
+
+
 # root route
 @app.route('/')
 @cross_origin()
