@@ -12,11 +12,12 @@ function Home() {
   const [threeDayForecast, setThreeDayForecast] = useState(0)
   const [forecastState, setForecastState] = useState([])
 
-  const colorCondition = (percentage >= 50) ? "green" : (percentage <= 51) ? "yellow" 
-  : (percentage <= 101) ? "orange" 
-  : (percentage <= 151) ? "red" 
-  : (percentage <= 201) ? "#88003A"
-  : (percentage <= 301) ? "#6C0015" : "#000000"
+  const colorCondition = (percentage < 51) ? "green" 
+  : (percentage >= 51 && percentage <= 100) ? "yellow" 
+  : (percentage >= 101 && percentage <= 200) ? "orange" 
+  : (percentage >= 201 && percentage <= 300) ? "red" 
+  : (percentage >= 301 && percentage <= 400) ? "#88003A"
+  : (percentage >= 401 && percentage <= 500) ? "#6C0015" : "#000000"
 
 
   function getAllData(data) {
@@ -197,7 +198,7 @@ function Home() {
       <div className='recomendations-button'>
         <button type='button' className='recomendation-button'> Show Recomendations </button>
         <div>
-          <p>
+          <p className='recomendations'>
             {forecastState}
           </p>
         </div>
