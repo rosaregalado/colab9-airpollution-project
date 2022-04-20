@@ -8,7 +8,7 @@ dotenv.load_dotenv('/.env')
 
 
 
-app = Flask(__name__, static_folder='airpollution/build', static_url_path='/')
+app = Flask(__name__, static_folder='airpollution/build', static_url_path='')
 cors = CORS(app, resources={r"*": {"origins": "*"}})
 
 # geopy library (example)
@@ -18,12 +18,10 @@ cors = CORS(app, resources={r"*": {"origins": "*"}})
 
 # root route
 @app.route('/')
+@cross_origin()
 def index():
-  return app.send_static_file('index.html')
+  return app.send_from_directory(app.static_folder, 'index.html')
 
-@app.errorhandler(404)
-def not_found(e):
-  return app.send_static_file('index.html')
 
 # ignore this route, it only renders a recommendation form 
 @app.route('/recommendation-form', methods=['GET', 'POST'])
