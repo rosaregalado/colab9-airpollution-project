@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for, jsonify
+from flask import Flask, request, render_template, redirect, url_for, jsonify, send_from_directory
 import requests
 from geopy.geocoders import Nominatim
 import dotenv
@@ -8,7 +8,7 @@ dotenv.load_dotenv('/.env')
 
 
 
-app = Flask(__name__, static_folder='airpollution/build', static_url_path='')
+app = Flask(__name__, static_folder='airpollution-app/build', static_url_path='')
 cors = CORS(app, resources={r"*": {"origins": "*"}})
 
 # geopy library (example)
@@ -20,7 +20,7 @@ cors = CORS(app, resources={r"*": {"origins": "*"}})
 @app.route('/')
 @cross_origin()
 def index():
-  return app.send_from_directory(app.static_folder, 'index.html')
+  return send_from_directory(app.static_folder, 'index.html')
 
 
 # ignore this route, it only renders a recommendation form 
@@ -28,11 +28,6 @@ def index():
 def recc_form():
   return render_template('partials/recommendation-form.html')
 
-
-# ignore this route, it only renders a recommendation form 
-@app.route('/recommendation-form', methods=['GET', 'POST'])
-def recc_form():
-  return render_template('partials/recommendation-form.html')
 
 
 # -----------------------------------------------------------------------------------------------
