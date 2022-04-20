@@ -10,8 +10,14 @@ function Home() {
   const [dayForecast, setdayForecast] = useState(0)
   const [twoDayForecast, setTwoDayForecast] = useState(0)
   const [threeDayForecast, setThreeDayForecast] = useState(0)
+  const [forecastState, setForecastState] = useState([])
 
-  const colorCondition = (percentage <= 25) ? "red" : (percentage >= 75) ? "green" : "yellow"
+  const colorCondition = (percentage >= 50) ? "green" : (percentage <= 51) ? "yellow" 
+  : (percentage <= 101) ? "orange" 
+  : (percentage <= 151) ? "red" 
+  : (percentage <= 201) ? "#88003A"
+  : (percentage <= 301) ? "#6C0015" : "#000000"
+
 
   function getAllData(data) {
     
@@ -50,9 +56,25 @@ function Home() {
       setThreeDayForecast(e[2])
     }
 
+    function getRecommendations(e) {
+      let formData = new FormData(document.getElementById('form'))
+  
+      const requestOptions = {
+        method: 'POST',
+        body: formData
+      };
+  
+      e.preventDefault()
+      fetch('http://localhost:5000/health_recommendations', requestOptions)
+      .then(response => response.json())
+      .then(data => setForecastState(data));
+    }
+
     getAqiData(data)
     getForecast(data)
+    getRecommendations(data)
   }
+
 
   return (
     <div className="home">
@@ -174,6 +196,11 @@ function Home() {
 
       <div className='recomendations-button'>
         <button type='button' className='recomendation-button'> Show Recomendations </button>
+        <div>
+          <p>
+            {forecastState}
+          </p>
+        </div>
       </div>
 
     </div>

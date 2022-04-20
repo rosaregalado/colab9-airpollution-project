@@ -1,7 +1,10 @@
 from flask import Flask, request, render_template, redirect, url_for, jsonify
 import requests
 from geopy.geocoders import Nominatim
+import dotenv
 from flask_cors import CORS
+import os
+dotenv.load_dotenv('/.env')
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"*": {"origins": "*"}})
@@ -43,7 +46,7 @@ def breezometer_aqi():
   # api headers
   headers = {
     "X-RapidAPI-Host": "air-quality.p.rapidapi.com",
-    "X-RapidAPI-Key": "e781aa816amshbf10e18b7cc1a54p10f94ajsn33d3e400d096"
+    "X-RapidAPI-Key": os.environ.get("rapid_api_key")
   }
 
   # convert api data to json
@@ -69,7 +72,8 @@ def health_recommendations():
   longitude = str(geolocation.longitude)
 
   # convert data to json
-  api_url = requests.get('https://api.breezometer.com/air-quality/v2/current-conditions?lat=' +latitude+ '&lon=' +longitude+ '&key=89e152af8d9f4b77872dbdc7b7f602d2&features=breezometer_aqi,health_recommendations')
+  api_key = os.environ.get('breezometer_api_key')
+  api_url = requests.get("https://api.breezometer.com/air-quality/v2/current-conditions?lat=" +latitude+ '&lon=' +longitude+ "&key=" +api_key+ "&features=breezometer_aqi,health_recommendations")
   json_obj = api_url.json()
   
   # api health recommendations
@@ -102,7 +106,7 @@ def forecast():
 
   headers = {
     "X-RapidAPI-Host": "air-quality.p.rapidapi.com",
-    "X-RapidAPI-Key": "e781aa816amshbf10e18b7cc1a54p10f94ajsn33d3e400d096"
+    "X-RapidAPI-Key": os.environ.get("rapid_api_key")
   }
   # request data from api url
   response = requests.request("GET", api_url, headers=headers, params=querystring)
